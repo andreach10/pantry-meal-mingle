@@ -1,7 +1,7 @@
 import { describe,it,expect } from 'vitest';
 import { sampleItems,freshness,needsShopping } from '@/lib/pantry';
 describe('Pantry rules',()=>{
- const base=sampleItems()[0]; const today=new Date(2026,10,11);
+ const base=sampleItems()[0]; if(!base)throw new Error('Missing sample bananas'); const today=new Date(2026,10,11);
  it('bananas have a five-day default',()=>expect(base.shelf_life).toBe(5));
  it('milk has a seven-day default',()=>expect(sampleItems().find(i=>i.name==='Milk')?.shelf_life).toBe(7));
  it('rice has a sixty-day default',()=>expect(sampleItems().find(i=>i.name==='Rice')?.shelf_life).toBe(60));
