@@ -14,13 +14,168 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      household_members: {
+        Row: {
+          display_name: string
+          household_id: string
+          user_id: string
+        }
+        Insert: {
+          display_name: string
+          household_id: string
+          user_id: string
+        }
+        Update: {
+          display_name?: string
+          household_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "household_members_household_id_fkey"
+            columns: ["household_id"]
+            isOneToOne: false
+            referencedRelation: "households"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      households: {
+        Row: {
+          id: string
+          invite_code: string
+          name: string
+        }
+        Insert: {
+          id?: string
+          invite_code?: string
+          name?: string
+        }
+        Update: {
+          id?: string
+          invite_code?: string
+          name?: string
+        }
+        Relationships: []
+      }
+      pantry_items: {
+        Row: {
+          bought_on: string | null
+          category: string
+          emoji: string
+          favorite: boolean
+          household_id: string
+          id: string
+          name: string
+          on_list: boolean
+          shelf_life: number
+        }
+        Insert: {
+          bought_on?: string | null
+          category?: string
+          emoji?: string
+          favorite?: boolean
+          household_id: string
+          id?: string
+          name: string
+          on_list?: boolean
+          shelf_life?: number
+        }
+        Update: {
+          bought_on?: string | null
+          category?: string
+          emoji?: string
+          favorite?: boolean
+          household_id?: string
+          id?: string
+          name?: string
+          on_list?: boolean
+          shelf_life?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pantry_items_household_id_fkey"
+            columns: ["household_id"]
+            isOneToOne: false
+            referencedRelation: "households"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          display_name: string
+          id: string
+        }
+        Insert: {
+          display_name?: string
+          id: string
+        }
+        Update: {
+          display_name?: string
+          id?: string
+        }
+        Relationships: []
+      }
+      purchases: {
+        Row: {
+          bought_on: string
+          buyer_id: string
+          buyer_name: string
+          emoji: string
+          household_id: string
+          id: string
+          item_id: string | null
+          item_name: string
+        }
+        Insert: {
+          bought_on: string
+          buyer_id: string
+          buyer_name: string
+          emoji: string
+          household_id: string
+          id?: string
+          item_id?: string | null
+          item_name: string
+        }
+        Update: {
+          bought_on?: string
+          buyer_id?: string
+          buyer_name?: string
+          emoji?: string
+          household_id?: string
+          id?: string
+          item_id?: string | null
+          item_name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "purchases_household_id_fkey"
+            columns: ["household_id"]
+            isOneToOne: false
+            referencedRelation: "households"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "purchases_item_id_fkey"
+            columns: ["item_id"]
+            isOneToOne: false
+            referencedRelation: "pantry_items"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      buy_item: { Args: { _id: string; _today: string }; Returns: undefined }
+      my_household: { Args: never; Returns: string }
+      setup_household: {
+        Args: { _code?: string; _name: string }
+        Returns: string
+      }
     }
     Enums: {
       [_ in never]: never
