@@ -14,6 +14,29 @@ export type Database = {
   }
   public: {
     Tables: {
+      hidden_staples: {
+        Row: {
+          household_id: string
+          name: string
+        }
+        Insert: {
+          household_id?: string
+          name: string
+        }
+        Update: {
+          household_id?: string
+          name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "hidden_staples_household_id_fkey"
+            columns: ["household_id"]
+            isOneToOne: false
+            referencedRelation: "households"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       household_members: {
         Row: {
           display_name: string
