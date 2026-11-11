@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## App architecture
+- Keep the home screen public with clearly labeled sample data; all real household reads and writes require Cloud auth and household-scoped RLS, so no private data is exposed before sign-in.
+- Use atomic database purchase and household-join functions to record buyer history and enforce two-member sharing without client-side permission decisions.
+- Derive freshness and shopping membership from purchase dates on read; subscribe to household changes and periodically refresh so expired items appear without background jobs.
