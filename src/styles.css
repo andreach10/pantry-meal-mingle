@@ -263,3 +263,4 @@ input, select { border: 1.5px solid var(--ink); border-radius: 12px 4px 10px 5px
 .search-box input { background: transparent; border-color: var(--ink); }
 button { font-family: inherit; }
 img { filter: grayscale(1); }
+.text-xl,.text-2xl{filter:grayscale(1) contrast(1.1);}
