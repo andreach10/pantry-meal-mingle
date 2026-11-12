@@ -34,4 +34,4 @@ use the editor.
 - Use atomic database purchase and household-join functions to record buyer history and enforce two-member sharing without client-side permission decisions.
 - Derive freshness and shopping membership from purchase dates on read; subscribe to household changes and periodically refresh so expired items appear without background jobs.
 - Translate catalog identifiers through a presentation-only dictionary; preserve stored names and categories so household history and cadence remain linked.
-- Render produce through a reusable two-tone illustration component and use semantic global tokens for all screen palettes so the interface has no emoji or hardcoded feature colors.
+- Design: farmers-market poster style (cream paper, burgundy ink, Archivo Black / DM Sans / Bagel Fat One). Decorative produce lives in `src/components/market-art.tsx`; items show their stored emoji on a category-tinted badge (the owner asked for emoji). Lists are hairline-separated rows under collapsible category headers.

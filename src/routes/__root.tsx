@@ -22,14 +22,14 @@ function NotFoundComponent() {
         <h1 className="text-7xl font-bold text-foreground">404</h1>
         <h2 className="mt-4 text-xl font-semibold text-foreground">Página no encontrada</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          Esta página no existe o cambió de lugar.
+          La página que buscas no existe o fue movida.
         </p>
         <div className="mt-6">
           <Link
             to="/"
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Volver al inicio
+            Ir al inicio
           </Link>
         </div>
       </div>
@@ -48,10 +48,10 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          No se pudo cargar la página
+          Esta página no cargó
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Algo salió mal. Intenta de nuevo o vuelve al inicio.
+          Algo salió mal de nuestra parte. Puedes intentar recargar o volver al inicio.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -61,13 +61,13 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
             }}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Reintentar
+            Intentar de nuevo
           </button>
           <a
             href="/"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
-            Volver al inicio
+            Ir al inicio
           </a>
         </div>
       </div>
@@ -83,17 +83,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Despensa — Un hogar bien surtido" },
-      { name: "description", content: "Tu despensa y lista de compras compartida." },
+      { title: "Pantry — Un poquito más de casa" },
+      { name: "description", content: "Una despensa y lista de mercado compartida para tu casa." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Despensa — Un hogar bien surtido" },
-      { property: "og:description", content: "Tu despensa y lista de compras compartida." },
+      { property: "og:title", content: "Pantry — Un poquito más de casa" },
+      { property: "og:description", content: "Una despensa y lista de mercado compartida para tu casa." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
-      {rel:'stylesheet',href:'https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@900&display=swap'},
+      {rel:'stylesheet',href:'https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bagel+Fat+One&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap'},
       {
         rel: "stylesheet",
         href: appCss,
