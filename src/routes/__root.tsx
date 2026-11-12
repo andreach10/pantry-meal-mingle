@@ -93,7 +93,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
-      {rel:'stylesheet',href:'https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Kalam:wght@400;700&family=Courier+Prime:wght@400;700&display=swap'},
+      {rel:'stylesheet',href:'https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap'},
       {
         rel: "stylesheet",
         href: appCss,
