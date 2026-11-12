@@ -31,7 +31,7 @@ use the editor.
 
 ## App architecture
 - Keep the home screen public with clearly labeled sample data; all real household reads and writes require Cloud auth and household-scoped RLS, so no private data is exposed before sign-in.
-- Use atomic database purchase and household-join functions to record buyer history and enforce two-member sharing without client-side permission decisions.
+- Use atomic database purchase and household-join functions to record buyer history and enforce the household member cap without client-side permission decisions.
 - Derive freshness and shopping membership from purchase dates on read; subscribe to household changes and periodically refresh so expired items appear without background jobs.
 - Translate catalog identifiers through a presentation-only dictionary; preserve stored names and categories so household history and cadence remain linked.
 - Design: farmers-market poster style (cream paper, burgundy ink, Archivo Black / DM Sans / Bagel Fat One). Decorative produce lives in `src/components/market-art.tsx`; items show their stored emoji on a category-tinted badge (the owner asked for emoji). Lists are hairline-separated rows under collapsible category headers.

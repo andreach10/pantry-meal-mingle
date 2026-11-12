@@ -331,6 +331,8 @@ label { font-size: 13px; font-weight: 700; display: grid; gap: 7px; }
   .day-column { min-height: 160px; }
   .sample-strip { border-radius: 20px; align-items: flex-start; }
 }
+.avatar-xs { width: 20px; height: 20px; font-size: 10px; display: inline-grid; vertical-align: middle; }
+.requester { margin-left: 6px; }
 
 /* Installed app (home-screen): keep content clear of the phone's status bar and home indicator. */
 .app-shell { padding-top: env(safe-area-inset-top, 0px); padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)); }
