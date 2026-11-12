@@ -23,3 +23,14 @@ export const staples:Staple[] = [
  ...S('Pet supplies',[['Cat food','🐱',30],['Dog food','🐶',30],['Cat litter','🪣',30]]),
 ];
 export function availableStaples(items:{name:string}[],hidden:string[]){const taken=new Set([...items.map(i=>i.name.toLowerCase()),...hidden.map(h=>h.toLowerCase())]);return staples.filter(s=>!taken.has(s.name.toLowerCase()));}
+export type Cadence = { every:number; since:number; count:number; due:boolean };
+/** Learns how often an item is bought from purchase history. Needs 3+ purchases on different days. */
+export function cadenceFor(name:string,purchases:{item_name:string;bought_on:string}[],today=new Date()):Cadence|null{
+ const days=[...new Set(purchases.filter(p=>p.item_name.toLowerCase()===name.toLowerCase()).map(p=>p.bought_on))].sort();
+ if(days.length<3)return null;
+ const gaps=days.slice(1).map((d,i)=>differenceInCalendarDays(parseISO(d),parseISO(days[i]!)));
+ const every=Math.max(1,Math.round(gaps.reduce((a,b)=>a+b,0)/gaps.length));
+ const since=Math.max(0,differenceInCalendarDays(today,parseISO(days[days.length-1]!)));
+ return {every,since,count:days.length,due:since>=Math.max(1,Math.floor(every*0.85))};
+}
+export const cadenceLabel=(c:Cadence)=>c.every%7===0?`every ${c.every/7===1?'week':`${c.every/7} weeks`}`:`every ${c.every} days`;
