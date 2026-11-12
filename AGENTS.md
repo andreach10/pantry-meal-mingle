@@ -33,3 +33,5 @@ use the editor.
 - Keep the home screen public with clearly labeled sample data; all real household reads and writes require Cloud auth and household-scoped RLS, so no private data is exposed before sign-in.
 - Use atomic database purchase and household-join functions to record buyer history and enforce two-member sharing without client-side permission decisions.
 - Derive freshness and shopping membership from purchase dates on read; subscribe to household changes and periodically refresh so expired items appear without background jobs.
+- Translate catalog identifiers through a presentation-only dictionary; preserve stored names and categories so household history and cadence remain linked.
+- Render produce through a reusable two-tone illustration component and use semantic global tokens for all screen palettes so the interface has no emoji or hardcoded feature colors.
