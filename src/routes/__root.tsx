@@ -82,7 +82,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     // twitter:image here: every page without its own would inherit the root's preview image.
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
+      // Installable app (home-screen): colours, iPhone standalone mode and the app name under the icon.
+      { name: "theme-color", content: "#F6EEE3" },
+      { name: "mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "default" },
+      { name: "apple-mobile-web-app-title", content: "pantry" },
       { title: "Pantry — Un poquito más de casa" },
       { name: "description", content: "Una despensa y lista de mercado compartida para tu casa." },
       { name: "author", content: "Lovable" },
@@ -99,6 +105,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "manifest", href: "/manifest.webmanifest" },
+      { rel: "apple-touch-icon", href: "/icons/apple-touch-icon.png" },
     ],
   }),
   shellComponent: RootShell,
@@ -124,6 +132,8 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router=useRouter();
+  // Register the offline/install worker on the published app only (not in dev or inside Lovable's preview frame).
+  useEffect(()=>{if(!import.meta.env.PROD||!('serviceWorker' in navigator)||window.self!==window.top)return;navigator.serviceWorker.register('/sw.js').catch(()=>{});},[]);
   useEffect(()=>{const {data}=supabase.auth.onAuthStateChange(event=>{if(event!=='SIGNED_IN'&&event!=='SIGNED_OUT'&&event!=='USER_UPDATED')return;void router.invalidate();if(event!=='SIGNED_OUT')void queryClient.invalidateQueries();});return()=>data.subscription.unsubscribe();},[router,queryClient]);
 
   return (
