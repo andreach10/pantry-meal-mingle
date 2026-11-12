@@ -68,16 +68,19 @@ export type Database = {
           id: string
           invite_code: string
           name: string
+          shopper_id: string | null
         }
         Insert: {
           id?: string
           invite_code?: string
           name?: string
+          shopper_id?: string | null
         }
         Update: {
           id?: string
           invite_code?: string
           name?: string
+          shopper_id?: string | null
         }
         Relationships: []
       }
@@ -195,6 +198,7 @@ export type Database = {
     Functions: {
       buy_item: { Args: { _id: string; _today: string }; Returns: undefined }
       my_household: { Args: never; Returns: string }
+      set_shopper: { Args: { _user: string }; Returns: undefined }
       setup_household: {
         Args: { _code?: string; _name: string }
         Returns: string
