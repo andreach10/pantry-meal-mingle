@@ -15,6 +15,13 @@
       "when": 1794436513990,
       "tag": "0001_hidden_staples",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794496584350,
+      "tag": "0002_shopper_turn",
+      "breakpoints": true
     }
   ]
 }
