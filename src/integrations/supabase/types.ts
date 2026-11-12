@@ -94,6 +94,7 @@ export type Database = {
           id: string
           name: string
           on_list: boolean
+          requested_by: string | null
           shelf_life: number
         }
         Insert: {
@@ -105,6 +106,7 @@ export type Database = {
           id?: string
           name: string
           on_list?: boolean
+          requested_by?: string | null
           shelf_life?: number
         }
         Update: {
@@ -116,6 +118,7 @@ export type Database = {
           id?: string
           name?: string
           on_list?: boolean
+          requested_by?: string | null
           shelf_life?: number
         }
         Relationships: [
